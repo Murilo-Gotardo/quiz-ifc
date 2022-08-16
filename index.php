@@ -21,26 +21,44 @@ require_once "src/ConexaoBD.php";
 <body>
     <main>
         <?php
-        $p = $_GET['p'];
+        //Conecção com o banco de dados
+        $conexao = ConexaoBanco::getConexao();
 
-        if ($p == 1) {
+        //Perguntas
+        $sqlPerguntas = "select * from perguntas";
+        $resultadoP = $conexao->query($sqlPerguntas);
+        $perguntas = $resultadoP->fetchAll(PDO::FETCH_ASSOC);
+
+        //Respostas corretas
+        $sqlRespostasCorretas = "select * from respostaCorreta";
+        $resultadoC = $conexao->query($sqlRespostasCorretas);
+        $corretas = $resultadoC->fetchAll(PDO::FETCH_ASSOC);
+
+        //Respostas incorretas
+        $sqlRespostasIncorretas = "select * from respostaIncorreta";
+        $resultadoI = $conexao->query($sqlRespostasIncorretas);
+        $incorretas = $resultadoI->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($perguntas as $p) {
+            
+            echo "<p class='questao' id='$idResC'>" . $p['pergunta'] . "<p/>";
+        }
+
+        foreach ($corretas as $c) {
+            $idResC = $c['idRespostaCorreta'];
+            echo "<p class='questao' id='$idResC'>" . $c['respostaCorreta'] . "<p/>";
+        }
+
+        $v = $_GET['p'];
+
+        if ($v == 1) {
             echo "<p>correto</p>";
         } else {
             echo "<p>errado</p>";
         };
 
-        $conexao = ConexaoBanco::getConexao();
-
-        $sql = "select * from pergunta";
-
-        $resultado = $conexao->query($sql);
-        $perguntas = $resultado->fetchAll(PDO::FETCH_ASSOC);
-
         ?>
         <div class="questao">
-            <div class="pergunta">
-                <p>pergunta</p>
-            </div>
             <div class="resposta">
                 <a href="index.php?p=1">
                     <p>certo</p>
