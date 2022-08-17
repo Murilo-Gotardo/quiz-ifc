@@ -35,53 +35,43 @@ require_once "src/ConexaoBD.php";
         $corretas = $resultadoC->fetchAll(PDO::FETCH_ASSOC);
 
         //Respostas incorretas
-        $sqlRespostasIncorretas = "select * from respostaIncorreta";
+        $sqlRespostasIncorretas = "select idRespostaIncorreta, respostaIncorreta1, respostaIncorreta2, respostaIncorreta3 from respostaIncorreta";
         $resultadoI = $conexao->query($sqlRespostasIncorretas);
         $incorretas = $resultadoI->fetchAll(PDO::FETCH_ASSOC);
-
-        foreach ($perguntas as $p) {
-            
-            echo "<p class='questao' id='$idResC'>" . $p['pergunta'] . "<p/>";
-        }
-
-        foreach ($corretas as $c) {
-            $idResC = $c['idRespostaCorreta'];
-            echo "<p class='questao' id='$idResC'>" . $c['respostaCorreta'] . "<p/>";
-        }
-
-        $v = $_GET['p'];
-
-        if ($v == 1) {
-            echo "<p>correto</p>";
-        } else {
-            echo "<p>errado</p>";
-        };
-
         ?>
         <div class="questao">
-            <div class="resposta">
-                <a href="index.php?p=1">
-                    <p>certo</p>
-                </a>
-            </div>
-            <div class="resposta">
-                <a href="index.php?p=false">
-                    <p>errado</p>
-                </a>
-            </div>
-            <div class="resposta">
-                <a href="index.php?p=false">
-                    <p>errado</p>
-                </a>
-            </div>
-            <div class="resposta">
-                <a href="index.php?p=false">
-                    <p>errado</p>
-                </a>
-            </div>
+            <?php
+            foreach ($corretas as $c) {
+                foreach ($perguntas as $p) {
+                    $cer = 3;
+                    $cer++;
+                    echo "<p class='questao'>" . $p['pergunta'] . "</p>";
+                    echo "<span class='questao' id='$cer' onclick='verificaCorreta()'>" . $c['respostaCorreta'] . "<br></span>";
+                }
+            }
 
+            foreach ($incorretas as $i) {
+                $err = 0;
+                echo "<button class='questao' id='$err'>" . $i['respostaIncorreta1'] . "<br></button>";
+                echo "<button class='questao' id='$err'>" . $i['respostaIncorreta2'] . "<br></button>";
+                echo "<button class='questao' id='$err'>" . $i['respostaIncorreta3'] . "</button>";
+            }
+            ?>
         </div>
     </main>
+    <script type="module" src="js/pegaID.js">
+        const { idC, idI } = require('js/pegaID.js');
+        
+
+
+
+
+        function verificaCorreta() {
+            if (idC !== idI) {
+                console.log('Acertou!!!');
+            }
+        };
+    </script>
 </body>
 
 </html>
