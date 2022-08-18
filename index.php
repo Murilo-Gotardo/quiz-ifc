@@ -15,6 +15,11 @@ require_once "src/ConexaoBD.php";
             text-align: center;
             margin-top: 100px;
         }
+
+        .pergunta {
+            padding: 20px;
+            background-color: red;
+        }
     </style>
 </head>
 
@@ -24,53 +29,69 @@ require_once "src/ConexaoBD.php";
         //Conecção com o banco de dados
         $conexao = ConexaoBanco::getConexao();
 
-        //Perguntas
-        $sqlPerguntas = "select * from perguntas";
-        $resultadoP = $conexao->query($sqlPerguntas);
-        $perguntas = $resultadoP->fetchAll(PDO::FETCH_ASSOC);
 
-        //Respostas corretas
-        $sqlRespostasCorretas = "select * from respostaCorreta";
-        $resultadoC = $conexao->query($sqlRespostasCorretas);
-        $corretas = $resultadoC->fetchAll(PDO::FETCH_ASSOC);
-
-        //Respostas incorretas
-        $sqlRespostasIncorretas = "select idRespostaIncorreta, respostaIncorreta1, respostaIncorreta2, respostaIncorreta3 from respostaIncorreta";
-        $resultadoI = $conexao->query($sqlRespostasIncorretas);
-        $incorretas = $resultadoI->fetchAll(PDO::FETCH_ASSOC);
         ?>
         <div class="questao">
             <?php
-            foreach ($corretas as $c) {
-                foreach ($perguntas as $p) {
-                    $cer = 3;
-                    $cer++;
-                    echo "<p class='questao'>" . $p['pergunta'] . "</p>";
-                    echo "<span class='questao' id='$cer' onclick='verificaCorreta()'>" . $c['respostaCorreta'] . "<br></span>";
-                }
-            }
+            $cont = 1;
+            $erroCont = 1;
+            for (;;) {
+                $i = rand(1, 3);
+                $per = $i;
 
-            foreach ($incorretas as $i) {
-                $err = 0;
-                echo "<button class='questao' id='$err'>" . $i['respostaIncorreta1'] . "<br></button>";
-                echo "<button class='questao' id='$err'>" . $i['respostaIncorreta2'] . "<br></button>";
-                echo "<button class='questao' id='$err'>" . $i['respostaIncorreta3'] . "</button>";
-            }
+
+                //Perguntas
+                $sqlPerguntas = "select pergunta, idPergunta from perguntas where idPergunta = " . $per;
+                $resultadoP = $conexao->query($sqlPerguntas);
+                $perguntas = $resultadoP->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($perguntas as $pe) {
+                    echo "<p class='questao pergunta' id='" . $pe['idPergunta'] . "'>" . $pe['pergunta'] . "</p>";
+                };
+
+                //Respostas corretas
+                $sqlRespostasCorretas = "select respostaCorreta, idRespostaCorreta from respostaCorreta where idRespostaCorreta = " . $i;
+                $resultadoC = $conexao->query($sqlRespostasCorretas);
+                $corretas = $resultadoC->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($corretas as $co) {
+                    echo "<p class='questao correta' id='" . $co['idRespostaCorreta'] . "'>" . $co['respostaCorreta'] . "<br></p>";
+                };
+
+                //Respostas incorretas
+                $sqlRespostasIncorretas = "select * from respostaIncorreta where idPergunta = " . $i;
+                $resultadoI = $conexao->query($sqlRespostasIncorretas);
+                $incorretas = $resultadoI->fetchAll(PDO::FETCH_ASSOC);
+
+                //Repete três vezes para imprimir as respostas erradas em ordem, de acordo com o "$erroCont"
+                for ($i = 1; $i <= 3; $i++) {
+                    foreach ($incorretas as $in) {
+                        echo "<p class='questao grupo-errado-" . $cont . "'>" . $in['respostaIncorreta' . $erroCont] . "<br></p>";
+                    };
+                    $erroCont++;
+
+                    //confirma se "$erroCont" ja foi acrescentado o suficiente antes de parar
+                    if ($erroCont == 4) {
+                        $erroCont = 1;
+                    };
+                }
+
+                $cont++;
+
+                if ($cont == 16) {
+                    break;
+                }
+            };
+
             ?>
         </div>
     </main>
-    <script type="module" src="js/pegaID.js">
-        const { idC, idI } = require('js/pegaID.js');
-        
+    <script>
+        let idPCru = document.getElementsByClassName("pergunta");
+        let idP =  idPCru.id;
 
-
-
-
-        function verificaCorreta() {
-            if (idC !== idI) {
-                console.log('Acertou!!!');
-            }
-        };
+        let idCCru = document.getElementsByClassName("correta");
+        let idC = idCCru.id;
     </script>
 </body>
 
