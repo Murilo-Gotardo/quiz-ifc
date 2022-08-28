@@ -76,32 +76,40 @@ require_once "src/ConexaoBD.php";
 
                 foreach ($respostasIncorretas as $reIn) {
                     $idResIn = excluiSelecionados(3, 4, [4]);
-                    $ale = rand(1, 4);
 
+                    $ale = rand(1, 4);
+                    //$ale será usado para selecionar, de forma aleatoria, a composição da questão na estrutura de condicionamento a seguir
+                    //Resposta Correta ocupará a primeira posição na questão
                     if ($ale == 1) {
                         echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
                         foreach ($idResIn as $num) {
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
                         };
-                    } elseif ($ale == 2) {
-
+                    }
+                    //Resposta Correta ocupará a segunda posição na questão 
+                    elseif ($ale == 2) {
                         foreach ($idResIn as $num) {
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
                             $cont++;
+
+                            //Garante que será executado apenas uma vez
                             if ($cont == 1) {
-                                for ($i = 0; $i < 1; $i++) {
-                                    echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
-                                }
+                                echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
                             }
                         };
 
                         $cont = 0;
-                    } elseif ($ale == 3) {
+                    }
+                    //Resposta Correta ocupará a terceira posição na questão 
+                    elseif ($ale == 3) {
                         foreach ($idResIn as $num) {
                             $cont++;
 
+                            //Garante que será executado apenas uma vez
                             if ($cont == 1) {
                                 echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
+
+                                //Aleatoriza $num para que seja diferente de sua entrada no foreach
                                 if ($num == 1) {
                                     $num = rand(2, 3);
                                 } elseif ($num == 3) {
@@ -110,10 +118,11 @@ require_once "src/ConexaoBD.php";
 
                                 echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
 
-                                for ($i = 0; $i < 1; $i++) {
-                                    echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
-                                }
 
+                                echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
+
+
+                                //verifica o valor de $num, em sua entrada no foreach, para impedir que a última questão se repita 
                                 if ($num != 2 && $num != 3) {
                                     $num = 1;
                                     echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
@@ -128,11 +137,13 @@ require_once "src/ConexaoBD.php";
                         };
 
                         $cont = 0;
-                    } elseif ($ale == 4) {
+                    }
+                    //Resposta Correta ocupará a quarta posição na questão 
+                    elseif ($ale == 4) {
                         foreach ($idResIn as $num) {
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
                         };
-                        
+
                         echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
                     }
                 };
