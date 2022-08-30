@@ -60,8 +60,6 @@ require_once "src/ConexaoBD.php";
             };
 
             $cont = 0;
-            //$contId é usado para indentificar, com números, as respostas corretas
-            $contId = 1;
             //Perguntas
             $sqlPerguntas = "SELECT * FROM perguntas ORDER BY RAND() limit 3";
             $resultadoP = $conexao->query($sqlPerguntas);
@@ -83,7 +81,7 @@ require_once "src/ConexaoBD.php";
                     //Resposta Correta ocupará a primeira posição na questão
                     if ($ale == 1) {
 
-                        echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
+                        echo "<p class='questao' id='" . "c" . "'>" . $pe['respostaCorreta'] . "</p>";
 
                         foreach ($idResIn as $num) {
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
@@ -97,7 +95,7 @@ require_once "src/ConexaoBD.php";
 
                             //Garante que será executado apenas uma vez
                             if ($cont == 1) {
-                                echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
+                                echo "<p class='questao' id='" . "c" . "'>" . $pe['respostaCorreta'] . "</p>";
                             }
                         };
 
@@ -122,7 +120,7 @@ require_once "src/ConexaoBD.php";
                                 echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
 
 
-                                echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
+                                echo "<p class='questao' id='" . "c" . "'>" . $pe['respostaCorreta'] . "</p>";
 
 
                                 //verifica o valor de $num, em sua entrada no foreach, para impedir que a última questão se repita 
@@ -147,9 +145,8 @@ require_once "src/ConexaoBD.php";
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
                         };
 
-                        echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
+                        echo "<p class='questao' id='" . "c" . "'>" . $pe['respostaCorreta'] . "</p>";
                     }
-                    $contId++;
                 };
             };
             ?>
