@@ -60,6 +60,8 @@ require_once "src/ConexaoBD.php";
             };
 
             $cont = 0;
+            //$contId é usado para indentificar, com números, as respostas corretas
+            $contId = 1;
             //Perguntas
             $sqlPerguntas = "SELECT * FROM perguntas ORDER BY RAND() limit 3";
             $resultadoP = $conexao->query($sqlPerguntas);
@@ -67,13 +69,12 @@ require_once "src/ConexaoBD.php";
 
             foreach ($perguntas as $pe) {
                 //Respostas Incorretas
-                $sqlRespostasIncorretas = "SELECT respostaIncorreta1, respostaIncorreta2, respostaIncorreta3 FROM perguntas WHERE idPergunta = " . $pe['idPergunta'] . " ORDER BY RAND() limit 3";
+                $sqlRespostasIncorretas = "SELECT respostaIncorreta1, respostaIncorreta2, respostaIncorreta3 FROM perguntas WHERE idPergunta = " . $pe['idPergunta'];
                 $resultadoIn = $conexao->query($sqlRespostasIncorretas);
                 $respostasIncorretas = $resultadoIn->fetchAll(PDO::FETCH_ASSOC);
 
                 //Impressão da pergunta
                 echo "<p class='questao pergunta' id='" . $pe['idPergunta'] . "'>" . $pe['pergunta'] . "</p>";
-
                 foreach ($respostasIncorretas as $reIn) {
                     $idResIn = excluiSelecionados(3, 4, [4]);
 
@@ -81,7 +82,9 @@ require_once "src/ConexaoBD.php";
                     //$ale será usado para selecionar, de forma aleatoria, a composição da questão na estrutura de condicionamento a seguir
                     //Resposta Correta ocupará a primeira posição na questão
                     if ($ale == 1) {
-                        echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
+
+                        echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
+
                         foreach ($idResIn as $num) {
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
                         };
@@ -94,7 +97,7 @@ require_once "src/ConexaoBD.php";
 
                             //Garante que será executado apenas uma vez
                             if ($cont == 1) {
-                                echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
+                                echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
                             }
                         };
 
@@ -119,7 +122,7 @@ require_once "src/ConexaoBD.php";
                                 echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
 
 
-                                echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
+                                echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
 
 
                                 //verifica o valor de $num, em sua entrada no foreach, para impedir que a última questão se repita 
@@ -144,8 +147,9 @@ require_once "src/ConexaoBD.php";
                             echo "<p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p>";
                         };
 
-                        echo "<p class='questao' id='" . $pe['idPergunta'] . "'>" . $pe['respostaCorreta'] . "</p>";
+                        echo "<p class='questao' id='" . "c" . $contId . "'>" . $pe['respostaCorreta'] . "</p>";
                     }
+                    $contId++;
                 };
             };
             ?>
