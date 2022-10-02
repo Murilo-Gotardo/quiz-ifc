@@ -1,5 +1,3 @@
-SELECT * from perguntas ORDER BY RAND() limit 1;
-
 CREATE TABLE pergunta 
 ( 
 pergunta VARCHAR(800),
