@@ -1,6 +1,8 @@
 *{
     font-family: 'Raleway', sans-serif;
     cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 body{
