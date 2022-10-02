@@ -1,8 +1,4 @@
-main {
-}
-
 *{
-
     font-family: 'Raleway', sans-serif;
     cursor: default;
 }
@@ -12,7 +8,6 @@ body{
 }
 
 .inicio{
-
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(1.5vh);
     background-color: #ffffff05;
@@ -31,14 +26,6 @@ body{
     top: 13.5vh;
     left: 35%;
     transform: translate(-50%, -50%);
-}
-
-.container-inicio{
-
-}
-
-.logo{
-    
 }
 
 .logo h1{
@@ -60,7 +47,6 @@ body{
 .div-iniciar{
     width: 100%;
 }
-
 
 .botao-iniciar{
     padding: 1.5vh;
@@ -119,7 +105,6 @@ body{
     transition: .6s;
     margin-bottom: 13px;
 }
-
 
 .progresso1, .progresso2,.progresso3,.progresso4,.progresso5,.progresso6,.progresso7,.progresso8,.progresso9,.progresso10{
     height: 2vh;
@@ -261,7 +246,6 @@ body{
     opacity: 0;
     transition: 3.6s;
 }
-
 
 .particula-1{
     position: fixed;

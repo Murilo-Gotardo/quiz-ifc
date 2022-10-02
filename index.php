@@ -14,9 +14,7 @@ require_once "src/ConexaoBD.php";
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -26,8 +24,7 @@ require_once "src/ConexaoBD.php";
     <div id="inicio" class="inicio">
         <div class="container-inicio">
             <div class="logo">
-                <h1>QUIZ<br>IFC
-                </h1>
+                <h1>QUIZ<br>IFC</h1>
             </div>
             <div class="dev">
                 <h2>Desenvolvido por<br>Maicon da Silva e<br>Murilo Gotardo</h2>
@@ -37,21 +34,17 @@ require_once "src/ConexaoBD.php";
             </div>
         </div>
     </div>
-        
-
-        
         <div id="progresso" class="progresso">
-                <div class="progresso1" id="progresso1"></div>
-                <div class="progresso2" id="progresso2"></div>
-                <div class="progresso3" id="progresso3"></div>
-                <div class="progresso4" id="progresso4"></div>
-                <div class="progresso5" id="progresso5"></div>
-                <div class="progresso6" id="progresso6"></div>
-                <div class="progresso7" id="progresso7"></div>
-                <div class="progresso8" id="progresso8"></div>
-                <div class="progresso9" id="progresso9"></div>
-                <div class="progresso10" id="progresso10"></div>
-
+            <div class="progresso1" id="progresso1"></div>
+            <div class="progresso2" id="progresso2"></div>
+            <div class="progresso3" id="progresso3"></div>
+            <div class="progresso4" id="progresso4"></div>
+            <div class="progresso5" id="progresso5"></div>
+            <div class="progresso6" id="progresso6"></div>
+            <div class="progresso7" id="progresso7"></div>
+            <div class="progresso8" id="progresso8"></div>
+            <div class="progresso9" id="progresso9"></div>
+            <div class="progresso10" id="progresso10"></div>
         </div>
         <div id="questoes" class="questoes">
             
@@ -118,21 +111,21 @@ require_once "src/ConexaoBD.php";
                     //Resposta Correta ocupará a primeira posição na questão
                     if ($ale == 1) {
 
-                        echo "<div onclick='proximo".$contQuest."(); AltCerta".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res' id='c".$contQuest."'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
+                        echo "<div onclick='proximo" . $contQuest . "(); AltCerta" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res' id='c" . $contQuest . "'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
 
                         foreach ($idResIn as $num) {
-                            echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                            echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest . "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
                         };
                     }
                     //Resposta Correta ocupará a segunda posição na questão 
                     elseif ($ale == 2) {
                         foreach ($idResIn as $num) {
-                            echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                            echo "<div onclick='proximo" . $contQuest."(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest . "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
                             $cont++;
 
                             //Garante que será executado apenas uma vez
                             if ($cont == 1) {
-                                echo "<div onclick='proximo".$contQuest."(); AltCerta".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res' id='c".$contQuest."'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
+                                echo "<div onclick='proximo" . $contQuest."(); AltCerta" . $contQuest."(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res' id='c" . $contQuest . "'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
                             }
                         };
 
@@ -145,7 +138,7 @@ require_once "src/ConexaoBD.php";
 
                             //Garante que será executado apenas uma vez
                             if ($cont == 1) {
-                                echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."();' class='div-res errado".$contQuest."; regular".$contQuest."();'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                                echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "();' class='div-res errado" . $contQuest . "; regular" . $contQuest . "();'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
 
                                 //Aleatoriza $num para que seja diferente de sua entrada no foreach
                                 if ($num == 1) {
@@ -154,22 +147,22 @@ require_once "src/ConexaoBD.php";
                                     $num = rand(1, 2);
                                 }
 
-                                echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                                echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest . "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
 
 
-                                echo "<div onclick='proximo".$contQuest."(); AltCerta".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res' id='c".$contQuest."'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
+                                echo "<div onclick='proximo".$contQuest."(); AltCerta" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res' id='c" . $contQuest . "'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
 
 
                                 //verifica o valor de $num, em sua entrada no foreach, para impedir que a última questão se repita 
                                 if ($num != 2 && $num != 3) {
                                     $num = 1;
-                                    echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                                    echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest. "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
                                 } elseif ($num != 1 && $num != 3) {
                                     $num = 2;
-                                    echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                                    echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest . "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
                                 } elseif ($num != 1 && $num != 2) {
                                     $num = 3;
-                                    echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                                    echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest . "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
                                 }
                             }
                         };
@@ -179,22 +172,23 @@ require_once "src/ConexaoBD.php";
                     //Resposta Correta ocupará a quarta posição na questão 
                     elseif ($ale == 4) {
                         foreach ($idResIn as $num) {
-                            echo "<div onclick='proximo".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res errado".$contQuest."'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
+                            echo "<div onclick='proximo" . $contQuest . "(); progresso" . $contQuest . "(); regular" . $contQuest . "();' class='div-res errado" . $contQuest . "'><p class='questao'>" . $reIn['respostaIncorreta' . $num] . "</p></div>";
                         };
 
-                        echo "<div onclick='proximo".$contQuest."(); AltCerta".$contQuest."(); progresso".$contQuest."(); regular".$contQuest."();' class='div-res' id='c".$contQuest."'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
+                        echo "<div onclick='proximo" . $contQuest . "(); AltCerta" . $contQuest . "(); progresso" . $contQuest . "(); regular" .$contQuest . "();' class='div-res' id='c" . $contQuest . "'><p class='questao'>" . $pe['respostaCorreta'] . "</p></div>";
                     }
                 };
-                echo "<div class='box-span' id='box-span".$contQuest."'></div>";
-            echo "</div>";
-            
+                ?>
+                <div class="box-span" id="box-span<?=$contQuest?>"></div>
+            </div>
+            <?php
             };
             ?>
         </div>
             <div class="d-flex justify-content-center pontos-container">
-            <div id="pontos" class="pontos-div d-flex justify-content-center">
-                <p id="porcentagem" class="pontos m-0">Acertos: 0/10</p>
-            </div>
+                <div id="pontos" class="pontos-div d-flex justify-content-center">
+                    <p id="porcentagem" class="pontos m-0">Acertos: 0/10</p>
+                </div>
             </div>
         <div>
             <div class="tempo">
