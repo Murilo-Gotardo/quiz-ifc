@@ -1,8 +1,4 @@
 <?php
-if (!defined('STDIN')) {
-
-    echo "Acesso não autorizado!";
-} else {
     include "topo.php";
 ?>
     <!-- CONTEÚDO -->
@@ -12,4 +8,4 @@ if (!defined('STDIN')) {
     <!-- FIM CONTEÚDO -->
 <?php
     include "rodape.php";
-}
+

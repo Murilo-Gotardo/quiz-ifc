@@ -3,12 +3,10 @@ require_once "ConexaoBD.php";
 
 class UsuarioDAO {
 
-    function consultarUsuario($nomeusuario, $senha) {
-        $conexao = ConexaoDB::getConexao();
+    function consultarUsuario($nomeUsuario, $senha) {
+        $conexao = ConexaoBD::getConexao();
 
-        $senhaCripto = md5($senha);
-
-        $sql = "SELECT * FROM usuario WHERE nomeUsuario = '$nomeusuario' AND senha = '$senhaCripto'";
+        $sql = "SELECT * FROM usuario WHERE nomeUsuario = '$nomeUsuario' AND senha = '$senha'";
 
         $resultado = $conexao->query($sql);
         return $resultado->fetch(PDO::FETCH_ASSOC);
