@@ -41,7 +41,7 @@
                     </a>
                     <ul class="list-unstyled" id="discoSubmenu">
                         <li>
-                            <a href="form_cadastro_produto.php">Cadastrar perguntas</a>
+                            <a href="form_cadastro_pergunta.php">Cadastrar perguntas</a>
                         </li>
                         <li>
                             <a href="form_lista_produtos.php">Listar perguntas</a>

@@ -32,7 +32,7 @@ CREATE TABLE `perguntas` (
   `respostaCorreta` varchar(500) DEFAULT NULL,
   `idPergunta` int NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`idPergunta`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `perguntas` (
 
 LOCK TABLES `perguntas` WRITE;
 /*!40000 ALTER TABLE `perguntas` DISABLE KEYS */;
-INSERT INTO `perguntas` VALUES ('o que significa PHP','javali','c++','éééé','Hyper',1),('complete: ca-','ra','rne','re','nenhuma',2),('concorda?','nao','sim','talvez','vai embora, louco!!!!',3);
+INSERT INTO `perguntas` VALUES ('o que significa PHP','javali','c++','éééé','Hyper',1),('complete: ca-','ra','rne','re','nenhuma',2),('concorda?','nao','sim','talvez','vai embora, louco!!!!',3),('Salas do if','567','1','24','25',4),('vc é?????','nao','sim','talvez','é',6),('depressivo hoje?','simmmmm','sim','nao','como vc sabe?',7),('complete: o que afaga - ','se apega demais','atira rojões também','nao faz nada','atira pedras também',8),('\"nao sei\"; complete','o que estou ouvindo; na verdade eu sei, é chopin','o que estou fazendo','se ele gosta de mim',', ta dificil',9),('perguntas e mais perguntas','nao sei o que fazer','perco a sanidade','talvez me mate','ou apenas vou sofrer',10),('já era né?','é provável','talvez','tenha um pouco de esperança','sim',11);
 /*!40000 ALTER TABLE `perguntas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,4 +62,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-08-30 20:11:37
+-- Dump completed on 2022-10-03 16:23:33
