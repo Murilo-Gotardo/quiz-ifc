@@ -10,7 +10,7 @@ require_once "src/Funcoes.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>QUIZ-IFC</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,16 +36,13 @@ require_once "src/Funcoes.php";
         </div>
     </div>
         <div id="progresso" class="progresso">
-            <div class="progresso1" id="progresso1"></div>
-            <div class="progresso2" id="progresso2"></div>
-            <div class="progresso3" id="progresso3"></div>
-            <div class="progresso4" id="progresso4"></div>
-            <div class="progresso5" id="progresso5"></div>
-            <div class="progresso6" id="progresso6"></div>
-            <div class="progresso7" id="progresso7"></div>
-            <div class="progresso8" id="progresso8"></div>
-            <div class="progresso9" id="progresso9"></div>
-            <div class="progresso10" id="progresso10"></div>
+            <?php
+            $progressoCont = 1;
+                for ($i=0; $i < 11; $i++) { 
+                    echo "<div class='progresso" . $progressoCont . "'id='progresso" . $progressoCont . "'></div>";
+                    $progressoCont++;
+                }
+            ?>
         </div>
         <div id="questoes" class="questoes">
             
@@ -145,21 +142,14 @@ require_once "src/Funcoes.php";
             </div>
         <div>
             <div class="tempo">
-                <div class="tempo1" id="tempo1"></div>
-                <div class="tempo2" id="tempo2"></div>
-                <div class="tempo3" id="tempo3"></div>
-                <div class="tempo4" id="tempo4"></div>
-                <div class="tempo5" id="tempo5"></div>
-                <div class="tempo6" id="tempo6"></div>
-                <div class="tempo7" id="tempo7"></div>
-                <div class="tempo8" id="tempo8"></div>
-                <div class="tempo9" id="tempo9"></div>
-                <div class="tempo10" id="tempo10"></div>
-                <div class="tempo11" id="tempo11"></div>
-                <div class="tempo12" id="tempo12"></div>
-                <div class="tempo13" id="tempo13"></div>
-                <div class="tempo14" id="tempo14"></div>
-                <div class="tempo15" id="tempo15"></div>
+
+                <?php
+                $tempoCont = 1;
+                    for ($i=0; $i < 11; $i++) { 
+                        echo "<div class='tempo" . $tempoCont . "' id='tempo" . $tempoCont . "'></div>";
+                        $tempoCont++;
+                    }
+                ?>
             </div>
         </div>
         <div class="obrigado d-flex justify-content-center align-items-center" id="obrigado">
