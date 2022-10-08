@@ -1,3 +1,7 @@
+<?php
+include "validar_sessao.php"
+?>
+
 <!DOCTYPE html>
 <html>
 
