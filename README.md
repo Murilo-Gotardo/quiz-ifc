@@ -15,7 +15,7 @@ Clone o projeto
 Vá para o diretório do projeto
 
 ```bash
-  cd quiz
+  cd quiz-ifc
 ```
 
 Inicie o docker-compose
