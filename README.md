@@ -34,5 +34,5 @@ O servidor web nginx sobe junto com o docker, então não são necessárias outr
 
 ## Authors
 
-- [@Murilo-Gotardo](https://github.com/Murilo-Gotardo)
 - [@MaiconDaSilva](https://github.com/maiconda)
+- [@Murilo-Gotardo](https://github.com/Murilo-Gotardo)
